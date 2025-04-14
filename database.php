@@ -3,22 +3,18 @@
 $db_server = "localhost";
 $db_user = "root";
 $db_password = "";
-$db_name = "hms_db";
+$db_name = "hmsdb";
 $conn = "";
 
-try {
-    $conn = mysqli_connect(
-        $db_server,
-        $db_user,
-        $db_password,
-        $db_name
-    );
-} catch (mysqli_sql_exception $e) {
-    echo "Connection failed. Error: " . $e->getMessage();
+$connection = mysqli_connect($db_server, $db_user, $db_password, $db_name);
+
+if (mysqli_connect_errno()) {
+
+    die("Failed to connect to MySQL: " . mysqli_connect_error());
+
+} else {
+    // echo "Connected successfully";
 }
 
-if ($conn) {
-    echo "Connected successfully";
-} 
 
-
+?>
